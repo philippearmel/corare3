@@ -1,47 +1,39 @@
-enum MessageType { text, image, system }
+import 'user.dart';
 
-class ChatMessage {
+enum MessageType { text, image, voice, file }
+
+class Message {
   final String id;
   final String chatId;
   final String senderId;
-  final String senderName;
-  final String? content;
-  final String? imageUrl;
-  final MessageType type;
+  final String content;
   final DateTime timestamp;
-  final bool isFromUser;
+  final MessageType type;
+  final bool isRead;
 
-  const ChatMessage({
+  Message({
     required this.id,
     required this.chatId,
     required this.senderId,
-    required this.senderName,
-    this.content,
-    this.imageUrl,
-    required this.type,
+    required this.content,
     required this.timestamp,
-    required this.isFromUser,
+    this.type = MessageType.text,
+    this.isRead = false,
   });
 }
 
 class Chat {
   final String id;
-  final String otherUserId;
-  final String otherUserName;
-  final String otherUserProfileImageUrl;
-  final String lastMessage;
-  final DateTime lastMessageTime;
-  final int unreadCount;
-  final bool isOnline;
+  final User user;
+  final String? lastMessage;
+  final DateTime? lastMessageTime;
+  final bool isUnread;
 
-  const Chat({
+  Chat({
     required this.id,
-    required this.otherUserId,
-    required this.otherUserName,
-    required this.otherUserProfileImageUrl,
-    required this.lastMessage,
-    required this.lastMessageTime,
-    required this.unreadCount,
-    this.isOnline = false,
+    required this.user,
+    this.lastMessage,
+    this.lastMessageTime,
+    this.isUnread = false,
   });
 }

@@ -41,7 +41,7 @@ class ChatCard extends StatelessWidget {
                   size: 30,
                 ),
               ),
-              if (chat.isOnline)
+              if (chat.user.isOnline)
                 Positioned(
                   bottom: 0,
                   right: 0,
@@ -62,7 +62,7 @@ class ChatCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  chat.otherUserName,
+                  chat.user.name,
                   style: GoogleFonts.inter(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -71,7 +71,7 @@ class ChatCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  chat.lastMessage,
+                  chat.lastMessage ?? '',
                   style: GoogleFonts.inter(
                     fontSize: 14,
                     color: AppTheme.mediumBlue,
@@ -81,7 +81,7 @@ class ChatCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  '${chat.unreadCount} new message • ${_formatTime(chat.lastMessageTime)}',
+                  '${chat.isUnread ? 'New message' : ''} • ${chat.lastMessageTime != null ? _formatTime(chat.lastMessageTime!) : ''}',
                   style: GoogleFonts.inter(
                     fontSize: 12,
                     color: AppTheme.lightGray,
@@ -90,7 +90,7 @@ class ChatCard extends StatelessWidget {
               ],
             ),
           ),
-          if (chat.unreadCount > 0)
+          if (chat.isUnread)
             Container(
               width: 24,
               height: 24,
@@ -100,7 +100,7 @@ class ChatCard extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  '${chat.unreadCount}',
+                  '1',
                   style: GoogleFonts.inter(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,

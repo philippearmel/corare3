@@ -1,45 +1,47 @@
 class User {
   final String id;
   final String name;
-  final String location;
-  final String organization;
+  final String? avatar;
+  final String? location;
+  final String? organization;
+  final String? bio;
+  final String? condition;
+  final String? diagnosedSince;
   final String memberSince;
-  final String condition;
-  final String bio;
-  final List<String> interests;
-  final String profileImageUrl;
   final bool isOnline;
+  final String? ageRange;
+  final String? gender;
+  final List<String>? interests;
 
-  const User({
+  User({
     required this.id,
     required this.name,
-    required this.location,
-    required this.organization,
+    this.avatar,
+    this.location,
+    this.organization,
+    this.bio,
+    this.condition,
+    this.diagnosedSince,
     required this.memberSince,
-    required this.condition,
-    required this.bio,
-    required this.interests,
-    required this.profileImageUrl,
     this.isOnline = false,
+    this.ageRange,
+    this.gender,
+    this.interests,
   });
 }
 
-class ChatUser {
-  final String id;
-  final String name;
-  final String lastMessage;
-  final String timeAgo;
-  final int unreadCount;
-  final String profileImageUrl;
-  final bool isOnline;
+class MedicalInfo {
+  final String? conditions;
+  final String? dateOfDiagnosis;
+  final String? centerOfDiagnosis;
+  final String? treatmentCenter;
+  final bool? involvementInClinicalTrial;
 
-  const ChatUser({
-    required this.id,
-    required this.name,
-    required this.lastMessage,
-    required this.timeAgo,
-    required this.unreadCount,
-    required this.profileImageUrl,
-    this.isOnline = false,
+  MedicalInfo({
+    this.conditions,
+    this.dateOfDiagnosis,
+    this.centerOfDiagnosis,
+    this.treatmentCenter,
+    this.involvementInClinicalTrial,
   });
 }

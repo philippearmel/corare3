@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../widgets/navigation_app_bar.dart';
-import '../models/post.dart';
+import '../models/feed.dart';
+import '../data/feed_data.dart';
 import '../widgets/custom_scaffold.dart';
 
 class PostDetailScreen extends StatelessWidget {
@@ -12,28 +13,8 @@ class PostDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Sample comments data
-    final comments = [
-      Comment(
-        id: '1',
-        postId: post.id,
-        authorId: '2',
-        authorName: 'Priya Nair',
-        authorProfileImageUrl: '',
-        content: 'I had the same experience! Cutting out gluten helped me too.',
-        createdAt: DateTime.now().subtract(Duration(hours: 2)),
-      ),
-      Comment(
-        id: '2',
-        postId: post.id,
-        authorId: '3',
-        authorName: 'Thomas Bauer',
-        authorProfileImageUrl: '',
-        content:
-            'Thanks for sharing this. I\'m going to try keeping a food diary.',
-        createdAt: DateTime.now().subtract(Duration(hours: 1)),
-      ),
-    ];
+    // Use comments data from FeedData
+    final comments = FeedData.postComments[post.id] ?? [];
 
     return CustomScaffold(
       appBar: const NavigationAppBar(title: 'Posts'),
@@ -80,7 +61,7 @@ class PostDetailScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              post.authorName,
+                              post.author.name,
                               style: GoogleFonts.inter(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -97,7 +78,7 @@ class PostDetailScreen extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 4),
                                 Text(
-                                  post.authorLocation,
+                                  post.author.location ?? '',
                                   style: GoogleFonts.inter(
                                     fontSize: 12,
                                     color: AppTheme.mediumBlue,
@@ -111,7 +92,7 @@ class PostDetailScreen extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 4),
                                 Text(
-                                  post.authorOrganization,
+                                  post.author.organization ?? '',
                                   style: GoogleFonts.inter(
                                     fontSize: 12,
                                     color: AppTheme.mediumBlue,
@@ -122,7 +103,7 @@ class PostDetailScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      _buildPostTypeTag(post.type),
+                      _buildPostTypeTag(post.category),
                     ],
                   ),
                   const SizedBox(height: 16),
@@ -150,7 +131,7 @@ class PostDetailScreen extends StatelessWidget {
                   // Engagement metrics
                   Row(
                     children: [
-                      if (post.likes > 0) ...[
+                      if (post.likeCount > 0) ...[
                         const Icon(
                           Icons.favorite_border,
                           size: 18,
@@ -158,7 +139,7 @@ class PostDetailScreen extends StatelessWidget {
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          '${post.likes}',
+                          '${post.likeCount}',
                           style: GoogleFonts.inter(
                             fontSize: 14,
                             color: AppTheme.mediumBlue,
@@ -173,7 +154,7 @@ class PostDetailScreen extends StatelessWidget {
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        '${post.comments}',
+                        '${post.commentCount}',
                         style: GoogleFonts.inter(
                           fontSize: 14,
                           color: AppTheme.mediumBlue,
@@ -289,7 +270,7 @@ class PostDetailScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  comment.authorName,
+                  comment.author.name,
                   style: GoogleFonts.inter(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
@@ -313,26 +294,30 @@ class PostDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildPostTypeTag(PostType type) {
+  Widget _buildPostTypeTag(String category) {
     Color backgroundColor;
     String label;
 
-    switch (type) {
-      case PostType.discussion:
+    switch (category.toLowerCase()) {
+      case 'discussion':
         backgroundColor = AppTheme.yellowTag;
         label = 'Discussion';
         break;
-      case PostType.question:
+      case 'question':
         backgroundColor = const Color(0xFFE0E7FF);
         label = 'Question';
         break;
-      case PostType.advice:
+      case 'advice':
         backgroundColor = const Color(0xFFD1FAE5);
         label = 'Advice';
         break;
-      case PostType.announcement:
+      case 'announcement':
         backgroundColor = const Color(0xFFFEF3C7);
         label = 'Announcement';
+        break;
+      default:
+        backgroundColor = AppTheme.yellowTag;
+        label = 'Discussion';
         break;
     }
 

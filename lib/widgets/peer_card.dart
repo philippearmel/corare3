@@ -82,7 +82,7 @@ class PeerCard extends StatelessWidget {
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          user.location,
+                          user.location ?? '',
                           style: GoogleFonts.inter(
                             fontSize: 12,
                             color: AppTheme.mediumBlue,
@@ -100,7 +100,7 @@ class PeerCard extends StatelessWidget {
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          user.organization,
+                          user.organization ?? '',
                           style: GoogleFonts.inter(
                             fontSize: 12,
                             color: AppTheme.mediumBlue,
@@ -130,7 +130,7 @@ class PeerCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
-                  user.condition,
+                  user.condition ?? '',
                   style: GoogleFonts.inter(
                     fontSize: 10,
                     color: AppTheme.darkGray,
@@ -142,7 +142,7 @@ class PeerCard extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            user.bio,
+            user.bio ?? '',
             style: GoogleFonts.inter(
               fontSize: 14,
               color: AppTheme.darkGray,
@@ -151,7 +151,7 @@ class PeerCard extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           // Interests
-          if (user.interests.isNotEmpty) ...[
+          if (user.interests != null && user.interests!.isNotEmpty) ...[
             Text(
               'Interests',
               style: GoogleFonts.inter(
@@ -164,7 +164,7 @@ class PeerCard extends StatelessWidget {
             Wrap(
               spacing: 8,
               runSpacing: 8,
-              children: user.interests.map((interest) {
+              children: user.interests!.map((interest) {
                 return Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 12,

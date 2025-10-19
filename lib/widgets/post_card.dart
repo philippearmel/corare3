@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
-import '../models/post.dart';
+import '../models/feed.dart';
 import '../screens/post_detail_screen.dart';
 
 class PostCard extends StatelessWidget {
@@ -55,7 +55,7 @@ class PostCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        post.authorName,
+                        post.author.name,
                         style: GoogleFonts.inter(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
@@ -72,7 +72,7 @@ class PostCard extends StatelessWidget {
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            post.authorLocation,
+                            post.author.location ?? '',
                             style: GoogleFonts.inter(
                               fontSize: 12,
                               color: AppTheme.mediumBlue,
@@ -86,7 +86,7 @@ class PostCard extends StatelessWidget {
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            post.authorOrganization,
+                            post.author.organization ?? '',
                             style: GoogleFonts.inter(
                               fontSize: 12,
                               color: AppTheme.mediumBlue,
@@ -97,7 +97,7 @@ class PostCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                _buildPostTypeTag(post.type),
+                _buildPostTypeTag(post.category),
               ],
             ),
             const SizedBox(height: 16),
@@ -127,7 +127,7 @@ class PostCard extends StatelessWidget {
             // Engagement metrics
             Row(
               children: [
-                if (post.likes > 0) ...[
+                if (post.likeCount > 0) ...[
                   const Icon(
                     Icons.favorite_border,
                     size: 18,
@@ -135,7 +135,7 @@ class PostCard extends StatelessWidget {
                   ),
                   const SizedBox(width: 4),
                   Text(
-                    '${post.likes}',
+                    '${post.likeCount}',
                     style: GoogleFonts.inter(
                       fontSize: 14,
                       color: AppTheme.mediumBlue,
@@ -150,7 +150,7 @@ class PostCard extends StatelessWidget {
                 ),
                 const SizedBox(width: 4),
                 Text(
-                  '${post.comments}',
+                  '${post.commentCount}',
                   style: GoogleFonts.inter(
                     fontSize: 14,
                     color: AppTheme.mediumBlue,
@@ -164,26 +164,30 @@ class PostCard extends StatelessWidget {
     );
   }
 
-  Widget _buildPostTypeTag(PostType type) {
+  Widget _buildPostTypeTag(String category) {
     Color backgroundColor;
     String label;
 
-    switch (type) {
-      case PostType.discussion:
+    switch (category.toLowerCase()) {
+      case 'discussion':
         backgroundColor = AppTheme.yellowTag;
         label = 'Discussion';
         break;
-      case PostType.question:
+      case 'question':
         backgroundColor = const Color(0xFFE0E7FF);
         label = 'Question';
         break;
-      case PostType.advice:
+      case 'advice':
         backgroundColor = const Color(0xFFD1FAE5);
         label = 'Advice';
         break;
-      case PostType.announcement:
+      case 'announcement':
         backgroundColor = const Color(0xFFFEF3C7);
         label = 'Announcement';
+        break;
+      default:
+        backgroundColor = AppTheme.yellowTag;
+        label = 'Discussion';
         break;
     }
 
