@@ -41,7 +41,7 @@ class PostCard extends StatelessWidget {
                   height: 40,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: AppTheme.mediumGray,
+                    color: AppTheme.mediumBlue,
                   ),
                   child: const Icon(
                     Icons.person,
@@ -68,28 +68,28 @@ class PostCard extends StatelessWidget {
                           const Icon(
                             Icons.location_on,
                             size: 12,
-                            color: AppTheme.mediumGray,
+                            color: AppTheme.mediumBlue,
                           ),
                           const SizedBox(width: 4),
                           Text(
                             post.authorLocation,
                             style: GoogleFonts.inter(
                               fontSize: 12,
-                              color: AppTheme.mediumGray,
+                              color: AppTheme.mediumBlue,
                             ),
                           ),
                           const SizedBox(width: 8),
                           const Icon(
                             Icons.business,
                             size: 12,
-                            color: AppTheme.mediumGray,
+                            color: AppTheme.mediumBlue,
                           ),
                           const SizedBox(width: 4),
                           Text(
                             post.authorOrganization,
                             style: GoogleFonts.inter(
                               fontSize: 12,
-                              color: AppTheme.mediumGray,
+                              color: AppTheme.mediumBlue,
                             ),
                           ),
                         ],
@@ -131,14 +131,14 @@ class PostCard extends StatelessWidget {
                   const Icon(
                     Icons.favorite_border,
                     size: 18,
-                    color: AppTheme.mediumGray,
+                    color: AppTheme.mediumBlue,
                   ),
                   const SizedBox(width: 4),
                   Text(
                     '${post.likes}',
                     style: GoogleFonts.inter(
                       fontSize: 14,
-                      color: AppTheme.mediumGray,
+                      color: AppTheme.mediumBlue,
                     ),
                   ),
                   const SizedBox(width: 16),
@@ -146,14 +146,14 @@ class PostCard extends StatelessWidget {
                 const Icon(
                   Icons.chat_bubble_outline,
                   size: 18,
-                  color: AppTheme.mediumGray,
+                  color: AppTheme.mediumBlue,
                 ),
                 const SizedBox(width: 4),
                 Text(
                   '${post.comments}',
                   style: GoogleFonts.inter(
                     fontSize: 14,
-                    color: AppTheme.mediumGray,
+                    color: AppTheme.mediumBlue,
                   ),
                 ),
               ],

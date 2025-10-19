@@ -4,7 +4,7 @@ import '../widgets/custom_bottom_nav.dart';
 import 'today_screen.dart';
 import 'peers_screen.dart';
 import 'chat_screen.dart';
-import 'assist_screen.dart';
+import 'feed_screen.dart';
 
 class MainNavigation extends StatefulWidget {
   const MainNavigation({super.key});
@@ -17,10 +17,10 @@ class _MainNavigationState extends State<MainNavigation> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    const TodayScreen(),
+    const FeedScreen(),
     const PeersScreen(),
     const ChatScreen(),
-    const AssistScreen(),
+    const TodayScreen(),
   ];
 
   @override

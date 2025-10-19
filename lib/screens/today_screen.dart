@@ -4,18 +4,18 @@ import '../theme/app_theme.dart';
 import '../widgets/app_header.dart';
 import '../widgets/suggestion_chips.dart';
 import '../widgets/chat_input.dart';
+import '../widgets/custom_scaffold.dart';
 
 class TodayScreen extends StatelessWidget {
   const TodayScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppTheme.lightBlueBackground,
+    return CustomScaffold(
+      appBar: const AppHeader(),
       body: SafeArea(
         child: Column(
           children: [
-            const AppHeader(),
             Expanded(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(20),
@@ -64,7 +64,7 @@ class TodayScreen extends StatelessWidget {
                         child: Text(
                           'Chat area will appear here',
                           style: TextStyle(
-                            color: AppTheme.mediumGray,
+                            color: AppTheme.mediumBlue,
                             fontSize: 16,
                           ),
                         ),

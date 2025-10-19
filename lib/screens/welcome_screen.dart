@@ -139,7 +139,7 @@ class WelcomeScreen extends StatelessWidget {
                   'Or sign up with',
                   style: GoogleFonts.inter(
                     fontSize: 14,
-                    color: AppTheme.mediumGray,
+                    color: AppTheme.mediumBlue,
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -177,7 +177,7 @@ class WelcomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      child: Icon(icon, size: 24, color: AppTheme.mediumGray),
+      child: Icon(icon, size: 24, color: AppTheme.mediumBlue),
     );
   }
 }

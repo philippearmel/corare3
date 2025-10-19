@@ -3,15 +3,16 @@ import '../theme/app_theme.dart';
 import '../widgets/app_header.dart';
 import '../widgets/post_card.dart';
 import '../models/post.dart';
+import '../widgets/custom_scaffold.dart';
 
-class AssistScreen extends StatefulWidget {
-  const AssistScreen({super.key});
+class FeedScreen extends StatefulWidget {
+  const FeedScreen({super.key});
 
   @override
-  State<AssistScreen> createState() => _AssistScreenState();
+  State<FeedScreen> createState() => _FeedScreenState();
 }
 
-class _AssistScreenState extends State<AssistScreen> {
+class _FeedScreenState extends State<FeedScreen> {
   int _selectedTab = 0;
 
   @override
@@ -68,12 +69,11 @@ class _AssistScreenState extends State<AssistScreen> {
       ),
     ];
 
-    return Scaffold(
-      backgroundColor: AppTheme.lightBlueBackground,
+    return CustomScaffold(
+      appBar: const AppHeader(),
       body: SafeArea(
         child: Column(
           children: [
-            const AppHeader(),
             // Tab selector
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
@@ -113,10 +113,26 @@ class _AssistScreenState extends State<AssistScreen> {
         });
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         decoration: BoxDecoration(
-          color: isSelected ? AppTheme.primaryBlue : AppTheme.white,
-          borderRadius: BorderRadius.circular(20),
+          gradient: isSelected
+              ? const LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    AppTheme.blueGradientStart,
+                    AppTheme.blueGradientEnd,
+                  ],
+                )
+              : null,
+          color: isSelected ? null : Colors.transparent,
+          borderRadius: BorderRadius.circular(25),
+          border: isSelected
+              ? null
+              : Border.all(
+                  color: AppTheme.lightGray.withValues(alpha: 0.3),
+                  width: 1,
+                ),
         ),
         child: Text(
           label,

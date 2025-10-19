@@ -14,27 +14,34 @@ class NavigationAppBar extends StatelessWidget implements PreferredSizeWidget {
       decoration: const BoxDecoration(
         color: AppTheme.white,
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(20),
-          bottomRight: Radius.circular(20),
+          bottomLeft: Radius.circular(30),
+          bottomRight: Radius.circular(30),
         ),
       ),
       child: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: IconButton(
-          onPressed: onBackPressed ?? () => Navigator.of(context).pop(),
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: AppTheme.darkGray,
-            size: 20,
+        toolbarHeight: kToolbarHeight + MediaQuery.of(context).padding.top,
+        leading: Padding(
+          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+          child: IconButton(
+            onPressed: onBackPressed ?? () => Navigator.of(context).pop(),
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: AppTheme.darkGray,
+              size: 20,
+            ),
           ),
         ),
-        title: Text(
-          title,
-          style: GoogleFonts.inter(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            color: AppTheme.darkGray,
+        title: Padding(
+          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+          child: Text(
+            title,
+            style: GoogleFonts.inter(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              color: AppTheme.darkGray,
+            ),
           ),
         ),
         centerTitle: false,
@@ -43,5 +50,5 @@ class NavigationAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 50); // Approximate status bar height
 }

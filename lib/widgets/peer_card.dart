@@ -36,7 +36,7 @@ class PeerCard extends StatelessWidget {
                     height: 50,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: AppTheme.mediumGray,
+                      color: AppTheme.mediumBlue,
                     ),
                     child: const Icon(
                       Icons.person,
@@ -78,14 +78,14 @@ class PeerCard extends StatelessWidget {
                         const Icon(
                           Icons.location_on,
                           size: 14,
-                          color: AppTheme.mediumGray,
+                          color: AppTheme.mediumBlue,
                         ),
                         const SizedBox(width: 4),
                         Text(
                           user.location,
                           style: GoogleFonts.inter(
                             fontSize: 12,
-                            color: AppTheme.mediumGray,
+                            color: AppTheme.mediumBlue,
                           ),
                         ),
                       ],
@@ -96,14 +96,14 @@ class PeerCard extends StatelessWidget {
                         const Icon(
                           Icons.business,
                           size: 14,
-                          color: AppTheme.mediumGray,
+                          color: AppTheme.mediumBlue,
                         ),
                         const SizedBox(width: 4),
                         Text(
                           user.organization,
                           style: GoogleFonts.inter(
                             fontSize: 12,
-                            color: AppTheme.mediumGray,
+                            color: AppTheme.mediumBlue,
                           ),
                         ),
                       ],

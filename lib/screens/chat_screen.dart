@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../theme/app_theme.dart';
 import '../widgets/app_header.dart';
 import '../widgets/chat_card.dart';
 import '../models/chat.dart';
+import '../widgets/custom_scaffold.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
@@ -43,12 +43,11 @@ class ChatScreen extends StatelessWidget {
       ),
     ];
 
-    return Scaffold(
-      backgroundColor: AppTheme.lightBlueBackground,
+    return CustomScaffold(
+      appBar: const AppHeader(),
       body: SafeArea(
         child: Column(
           children: [
-            const AppHeader(),
             Expanded(
               child: ListView.builder(
                 padding: const EdgeInsets.all(20),

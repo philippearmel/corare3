@@ -18,8 +18,8 @@ class CustomBottomNav extends StatelessWidget {
       decoration: const BoxDecoration(
         color: AppTheme.white,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
         ),
         boxShadow: [
           BoxShadow(
@@ -65,7 +65,7 @@ class CustomBottomNav extends StatelessWidget {
             ),
             child: Icon(
               icon,
-              color: isSelected ? AppTheme.primaryBlue : AppTheme.mediumGray,
+              color: isSelected ? AppTheme.primaryBlue : AppTheme.mediumBlue,
               size: 24,
             ),
           ),
@@ -74,7 +74,7 @@ class CustomBottomNav extends StatelessWidget {
             label,
             style: GoogleFonts.inter(
               fontSize: 12,
-              color: isSelected ? AppTheme.primaryBlue : AppTheme.mediumGray,
+              color: isSelected ? AppTheme.primaryBlue : AppTheme.mediumBlue,
               fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
             ),
           ),

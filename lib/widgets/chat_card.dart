@@ -33,7 +33,7 @@ class ChatCard extends StatelessWidget {
                 height: 50,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: AppTheme.mediumGray,
+                  color: AppTheme.mediumBlue,
                 ),
                 child: const Icon(
                   Icons.person,
@@ -74,7 +74,7 @@ class ChatCard extends StatelessWidget {
                   chat.lastMessage,
                   style: GoogleFonts.inter(
                     fontSize: 14,
-                    color: AppTheme.mediumGray,
+                    color: AppTheme.mediumBlue,
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,

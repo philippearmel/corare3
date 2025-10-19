@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../theme/app_theme.dart';
 import '../widgets/app_header.dart';
 import '../widgets/peer_card.dart';
 import '../models/user.dart';
+import '../widgets/custom_scaffold.dart';
 
 class PeersScreen extends StatelessWidget {
   const PeersScreen({super.key});
@@ -58,12 +58,11 @@ class PeersScreen extends StatelessWidget {
       ),
     ];
 
-    return Scaffold(
-      backgroundColor: AppTheme.lightBlueBackground,
+    return CustomScaffold(
+      appBar: const AppHeader(),
       body: SafeArea(
         child: Column(
           children: [
-            const AppHeader(),
             Expanded(
               child: ListView.builder(
                 padding: const EdgeInsets.all(20),

@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../widgets/navigation_app_bar.dart';
 import '../models/post.dart';
+import '../widgets/custom_scaffold.dart';
 
 class PostDetailScreen extends StatelessWidget {
   final Post post;
@@ -34,8 +35,7 @@ class PostDetailScreen extends StatelessWidget {
       ),
     ];
 
-    return Scaffold(
-      backgroundColor: AppTheme.lightBlueBackground,
+    return CustomScaffold(
       appBar: const NavigationAppBar(title: 'Posts'),
       body: SingleChildScrollView(
         child: Column(
@@ -66,7 +66,7 @@ class PostDetailScreen extends StatelessWidget {
                         height: 40,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: AppTheme.mediumGray,
+                          color: AppTheme.mediumBlue,
                         ),
                         child: const Icon(
                           Icons.person,
@@ -93,28 +93,28 @@ class PostDetailScreen extends StatelessWidget {
                                 const Icon(
                                   Icons.location_on,
                                   size: 12,
-                                  color: AppTheme.mediumGray,
+                                  color: AppTheme.mediumBlue,
                                 ),
                                 const SizedBox(width: 4),
                                 Text(
                                   post.authorLocation,
                                   style: GoogleFonts.inter(
                                     fontSize: 12,
-                                    color: AppTheme.mediumGray,
+                                    color: AppTheme.mediumBlue,
                                   ),
                                 ),
                                 const SizedBox(width: 8),
                                 const Icon(
                                   Icons.business,
                                   size: 12,
-                                  color: AppTheme.mediumGray,
+                                  color: AppTheme.mediumBlue,
                                 ),
                                 const SizedBox(width: 4),
                                 Text(
                                   post.authorOrganization,
                                   style: GoogleFonts.inter(
                                     fontSize: 12,
-                                    color: AppTheme.mediumGray,
+                                    color: AppTheme.mediumBlue,
                                   ),
                                 ),
                               ],
@@ -154,14 +154,14 @@ class PostDetailScreen extends StatelessWidget {
                         const Icon(
                           Icons.favorite_border,
                           size: 18,
-                          color: AppTheme.mediumGray,
+                          color: AppTheme.mediumBlue,
                         ),
                         const SizedBox(width: 4),
                         Text(
                           '${post.likes}',
                           style: GoogleFonts.inter(
                             fontSize: 14,
-                            color: AppTheme.mediumGray,
+                            color: AppTheme.mediumBlue,
                           ),
                         ),
                         const SizedBox(width: 16),
@@ -169,14 +169,14 @@ class PostDetailScreen extends StatelessWidget {
                       const Icon(
                         Icons.chat_bubble_outline,
                         size: 18,
-                        color: AppTheme.mediumGray,
+                        color: AppTheme.mediumBlue,
                       ),
                       const SizedBox(width: 4),
                       Text(
                         '${post.comments}',
                         style: GoogleFonts.inter(
                           fontSize: 14,
-                          color: AppTheme.mediumGray,
+                          color: AppTheme.mediumBlue,
                         ),
                       ),
                     ],
@@ -238,7 +238,7 @@ class PostDetailScreen extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: 'Add a comment',
                         hintStyle: GoogleFonts.inter(
-                          color: AppTheme.mediumGray,
+                          color: AppTheme.mediumBlue,
                         ),
                         border: InputBorder.none,
                       ),
@@ -279,7 +279,7 @@ class PostDetailScreen extends StatelessWidget {
             height: 32,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: AppTheme.mediumGray,
+              color: AppTheme.mediumBlue,
             ),
             child: const Icon(Icons.person, color: AppTheme.white, size: 18),
           ),
