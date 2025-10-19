@@ -62,12 +62,15 @@ class _FeedScreenState extends State<FeedScreen> {
         });
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        padding: EdgeInsets.symmetric(
+          horizontal: isSelected ? 40 : 24,
+          vertical: 12,
+        ),
         decoration: BoxDecoration(
           gradient: isSelected
               ? const LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
                   colors: [
                     AppTheme.blueGradientStart,
                     AppTheme.blueGradientEnd,

@@ -10,7 +10,7 @@ class AppTheme {
 
   // Primary Colors
   static const Color primaryBlue = Color(
-    0xFF3288F2,
+    0xFF2404FB,
   ); // Using gradient start as primary
   static const Color lightBlue = Color(0xFF3288F2);
   static const Color lightBlueBackground = Color(0xFFE3EDFC);
