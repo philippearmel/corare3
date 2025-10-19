@@ -49,11 +49,45 @@ class PostDetailScreen extends StatelessWidget {
                           shape: BoxShape.circle,
                           color: AppTheme.mediumBlue,
                         ),
-                        child: const Icon(
-                          Icons.person,
-                          color: AppTheme.white,
-                          size: 24,
-                        ),
+                        child:
+                            post.author.avatar != null &&
+                                post.author.avatar!.isNotEmpty
+                            ? ClipOval(
+                                child: Image.network(
+                                  post.author.avatar!,
+                                  width: 40,
+                                  height: 40,
+                                  fit: BoxFit.cover,
+                                  loadingBuilder:
+                                      (context, child, loadingProgress) {
+                                        if (loadingProgress == null) {
+                                          return child;
+                                        }
+                                        return const SizedBox(
+                                          width: 40,
+                                          height: 40,
+                                          child: Center(
+                                            child: CircularProgressIndicator(
+                                              strokeWidth: 2,
+                                              color: AppTheme.white,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return const Icon(
+                                      Icons.person,
+                                      color: AppTheme.white,
+                                      size: 24,
+                                    );
+                                  },
+                                ),
+                              )
+                            : const Icon(
+                                Icons.person,
+                                color: AppTheme.white,
+                                size: 24,
+                              ),
                       ),
                       const SizedBox(width: 12),
                       Expanded(

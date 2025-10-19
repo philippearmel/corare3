@@ -22,34 +22,32 @@ class _FeedScreenState extends State<FeedScreen> {
 
     return CustomScaffold(
       appBar: const AppHeader(),
-      body: SafeArea(
-        child: Column(
-          children: [
-            // Tab selector
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-              child: Row(
-                children: [
-                  _buildTab(0, 'For you'),
-                  const SizedBox(width: 16),
-                  _buildTab(1, 'Popular'),
-                ],
-              ),
+      body: Column(
+        children: [
+          // Tab selector
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            child: Row(
+              children: [
+                _buildTab(0, 'For you'),
+                const SizedBox(width: 16),
+                _buildTab(1, 'Popular'),
+              ],
             ),
-            Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                itemCount: posts.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 16),
-                    child: PostCard(post: posts[index]),
-                  );
-                },
-              ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              itemCount: posts.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 16),
+                  child: PostCard(post: posts[index]),
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

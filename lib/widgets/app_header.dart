@@ -25,7 +25,7 @@ class AppHeader extends StatelessWidget {
         padding: EdgeInsets.only(
           left: 20,
           right: 20,
-          top: MediaQuery.of(context).padding.top + 16,
+          top: MediaQuery.of(context).padding.top + 8,
           bottom: 16,
         ),
         child: Row(

@@ -14,23 +14,21 @@ class PeersScreen extends StatelessWidget {
 
     return CustomScaffold(
       appBar: const AppHeader(),
-      body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.all(20),
-                itemCount: peers.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 16),
-                    child: PeerCard(user: peers[index]),
-                  );
-                },
-              ),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              padding: const EdgeInsets.all(20),
+              itemCount: peers.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 16),
+                  child: PeerCard(user: peers[index]),
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
