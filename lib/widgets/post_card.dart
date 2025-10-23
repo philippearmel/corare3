@@ -206,33 +206,27 @@ class PostCard extends StatelessWidget {
   }
 
   Widget _buildPostTypeTag(String category) {
-    Color backgroundColor;
     Color borderColor;
     String label;
 
     switch (category.toLowerCase()) {
       case 'discussion':
-        backgroundColor = const Color(0xFFFFF9E6);
         borderColor = const Color(0xFFFFB700);
         label = 'Discussion';
         break;
       case 'question':
-        backgroundColor = const Color(0xFFF3E8FF);
         borderColor = const Color(0xFF8B5CF6);
         label = 'Question';
         break;
       case 'advice':
-        backgroundColor = const Color(0xFFECFDF5);
         borderColor = const Color(0xFF10B981);
         label = 'Advice';
         break;
       case 'announcement':
-        backgroundColor = const Color(0xFFF0FDF4);
         borderColor = const Color(0xFF22C55E);
         label = 'Announcement';
         break;
       default:
-        backgroundColor = const Color(0xFFFFF9E6);
         borderColor = const Color(0xFFFFB700);
         label = 'Discussion';
         break;
@@ -241,7 +235,7 @@ class PostCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
-        color: backgroundColor,
+        color: Colors.white,
         border: Border.all(color: borderColor, width: 1),
         borderRadius: BorderRadius.circular(16),
       ),
@@ -249,7 +243,7 @@ class PostCard extends StatelessWidget {
         label,
         style: GoogleFonts.inter(
           fontSize: 12,
-          color: AppTheme.darkGray,
+          color: borderColor,
           fontWeight: FontWeight.w500,
         ),
       ),
