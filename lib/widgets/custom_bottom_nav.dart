@@ -65,16 +65,15 @@ class CustomBottomNav extends StatelessWidget {
             ),
             child: Icon(
               isSelected ? filledIcon : outlineIcon,
-              color: isSelected ? AppTheme.primaryBlue : AppTheme.mediumBlue,
+              color: AppTheme.mediumBlue,
               size: 24,
             ),
           ),
-          const SizedBox(height: 4),
           Text(
             label,
             style: GoogleFonts.inter(
               fontSize: 12,
-              color: isSelected ? AppTheme.primaryBlue : AppTheme.mediumBlue,
+              color: AppTheme.mediumBlue,
               fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
             ),
           ),
