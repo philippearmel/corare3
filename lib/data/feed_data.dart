@@ -6,11 +6,11 @@ class FeedData {
   static final User _emilyWalker = User(
     id: 'feed_user_1',
     name: 'Emily Walker',
-    location: 'liverpool',
+    location: 'Liverpool',
     organization: 'Acmee Org',
     bio:
         'First-time mom to baby Noah (3 months); learning gentle handling, bath time setups, and quick diaper-change techniques, seeking other newborn tips.',
-    condition: 'Brugada Syndrome',
+    condition: 'Eczema',
     diagnosedSince: '2018',
     memberSince: '1 week',
     isOnline: true,
@@ -24,30 +24,36 @@ class FeedData {
     ],
   );
 
-  static final User _priyaNair = User(
+  static final User _danielSmith = User(
     id: 'feed_user_2',
-    name: 'Priya Nair',
-    location: 'nottingham',
+    name: 'Daniel Smith',
+    location: 'Austin',
+    organization: 'Ecms Co',
     bio:
-        'Amateur photographer who plans outdoor shoots around shade and wind -happy to trade sun/heat strategies and travel packing lists.',
-    condition: 'Epidermolysis bullosa',
-    diagnosedSince: '2020',
-    memberSince: '1 week',
+        'Software developer who found relief through lifestyle changes. Love sharing practical tips with the community.',
+    condition: 'Eczema',
+    diagnosedSince: '2019',
+    memberSince: '6 months',
     isOnline: true,
     avatar:
         "https://img.freepik.com/free-photo/good-looking-caucasian-female-with-blonde-straight-hair-wearing-glasses-denim-shirt-smiles-happily-has-good-mood-after-successful-day-university-glad-pleased-pose_176420-13174.jpg",
-    interests: ['📸 Photography', '✈️ Travel', '🌿 Nature', '🎨 Art'],
+    interests: ['💻 Technology', '🏃‍♂️ Running', '📖 Books', '🎮 Gaming'],
   );
 
-  static final User _thomasBauer = User(
+  static final User _kunalBatra = User(
     id: 'feed_user_3',
-    name: 'Thomas Bauer',
-    location: 'london',
-    memberSince: '1 week',
+    name: 'Kunal Batra',
+    location: 'London',
+    organization: 'Enic Org',
+    bio:
+        'Software engineer passionate about health and wellness. Always looking for new ways to manage my condition.',
+    condition: 'Psoriasis',
+    diagnosedSince: '2020',
+    memberSince: '1 year',
     isOnline: true,
     avatar:
         "https://img.freepik.com/free-photo/handsome-young-man-white-t-shirt_273609-7048.jpg",
-    interests: ['⚽ Sports', '💻 Technology', '🎵 Music'],
+    interests: ['💻 Technology', '🏃‍♂️ Fitness', '📚 Reading', '🎵 Music'],
   );
 
   static final User _marcelSupa = User(
@@ -104,37 +110,37 @@ class FeedData {
       id: '1',
       author: _emilyWalker,
       title:
-          'After keeping a food diary for 2 months, I discovered that dairy and eggs trigger my eczema. Within',
+          'After keeping a food diary for two months, I discovered that dairy and eggs trigger my eczema.',
       content:
-          'After keeping a food diary for 2 months, I discovered that dairy and eggs trigger my eczema. Within 24 hours of eating ice cream or cheese, I get itchy patches on my neck and behind my knees. Since cutting these out, my skin has been much clearer. Has anyone else had similar experiences with food triggers?',
+          'After keeping a food diary for two months, I discovered that dairy and eggs trigger my eczema. Within 24 hours of eating ice cream or cheese, I get itchy patches on my neck and behind my knees. Since cutting these out, my skin has been much clearer. Has anyone else had similar experiences with food triggers?',
       category: 'Discussion',
       createdAt: DateTime.now().subtract(const Duration(days: 7)),
       commentCount: 2,
-      likeCount: 12,
+      likeCount: 30,
     ),
     Post(
       id: '2',
-      author: _emilyWalker,
+      author: _danielSmith,
       title:
-          'Every winter, like clockwork, my psoriasis gets worse. The dry air and cold weather make my scalp an',
+          'I\'ve been dealing with eczema for 5 years now and I\'ve finally figured out my biggest trigger, stress and poor diet.',
       content:
-          'Every winter, like clockwork, my psoriasis gets worse. The dry air and cold weather make my scalp and knees flare up with thick, silvery scales. This year I\'m being proactive - using a humidifier in my bedroom, applying coconut oil after showers, and switching to fragrance-free products. What are your winter psoriasis management strategies?',
-      category: 'Discussion',
-      createdAt: DateTime.now().subtract(const Duration(days: 7)),
-      commentCount: 1,
-      likeCount: 8,
+          'I\'ve been dealing with eczema for 5 years now and I\'ve finally figured out my biggest trigger, stress and poor diet. When I lower my stress levels and improve my diet my symptoms are almost gone and I can finally live normally again. Has anyone else experienced this connection?',
+      category: 'Announcement',
+      createdAt: DateTime.now().subtract(const Duration(days: 5)),
+      commentCount: 10,
+      likeCount: 0,
     ),
     Post(
       id: '3',
-      author: _priyaNair,
+      author: _kunalBatra,
       title:
-          'I\'ve been dealing with eczema for 5 years now, and I\'ve finally figured out my biggest trigger: stre',
+          'I noticed that in winter my psoriasis gets worse. Is anyone experiencing the same?',
       content:
-          'I\'ve been dealing with eczema for 5 years now, and I\'ve finally figured out my biggest trigger: stress. When work gets overwhelming, my skin flares up within hours. I\'ve started meditation and regular exercise, which has helped significantly.',
-      category: 'Discussion',
-      createdAt: DateTime.now().subtract(const Duration(days: 7)),
-      commentCount: 0,
-      likeCount: 5,
+          'Every winter, like clockwork, my psoriasis gets worse. The dry air and cold weather make my scalp flare up with thick, silvery scales. This year I\'m being proactive - using a humidifier in my bedroom, applying coconut oil after showers, and switching to fragrance-free products. What are your winter psoriasis management strategies?',
+      category: 'Question',
+      createdAt: DateTime.now().subtract(const Duration(days: 3)),
+      commentCount: 10,
+      likeCount: 0,
     ),
     Post(
       id: '4',
@@ -182,7 +188,7 @@ class FeedData {
     ),
     Post(
       id: '8',
-      author: _thomasBauer,
+      author: _kunalBatra,
       title: 'Community Meetup - London This Saturday!',
       content:
           'Hey everyone! We\'re organizing a casual meetup this Saturday at Hyde Park (2 PM near the Serpentine). It\'s a great chance to connect in person, share experiences, and just hang out with people who understand. No pressure to talk about your condition - just come for the community! DM me if you\'re interested. ☀️',
@@ -220,13 +226,13 @@ class FeedData {
     '1': [
       Comment(
         id: 'c1',
-        author: _priyaNair,
+        author: _danielSmith,
         content: 'I had the same experience! Cutting out gluten helped me too.',
         createdAt: DateTime.now().subtract(const Duration(hours: 12)),
       ),
       Comment(
         id: 'c2',
-        author: _thomasBauer,
+        author: _kunalBatra,
         content:
             'Thanks for sharing this. I\'m going to try keeping a food diary.',
         createdAt: DateTime.now().subtract(const Duration(hours: 6)),

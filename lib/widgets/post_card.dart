@@ -37,8 +37,8 @@ class PostCard extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  width: 40,
-                  height: 40,
+                  width: 70,
+                  height: 70,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: AppTheme.mediumBlue,
@@ -49,16 +49,16 @@ class PostCard extends StatelessWidget {
                       ? ClipOval(
                           child: Image.network(
                             post.author.avatar!,
-                            width: 40,
-                            height: 40,
+                            width: 70,
+                            height: 70,
                             fit: BoxFit.cover,
                             loadingBuilder: (context, child, loadingProgress) {
                               if (loadingProgress == null) {
                                 return child;
                               }
                               return const SizedBox(
-                                width: 40,
-                                height: 40,
+                                width: 70,
+                                height: 70,
                                 child: Center(
                                   child: CircularProgressIndicator(
                                     strokeWidth: 2,
@@ -86,6 +86,7 @@ class PostCard extends StatelessWidget {
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         post.author.name,
@@ -96,37 +97,44 @@ class PostCard extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 2),
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.location_on,
-                            size: 12,
-                            color: AppTheme.mediumBlue,
-                          ),
-                          const SizedBox(width: 4),
-                          Text(
-                            post.author.location ?? '',
-                            style: GoogleFonts.inter(
-                              fontSize: 12,
-                              color: AppTheme.mediumBlue,
+                      if (post.author.location != null && post.author.location!.isNotEmpty)
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.location_on,
+                              size: 12,
+                              color: Color(0xFFFFB700),
                             ),
-                          ),
-                          const SizedBox(width: 8),
-                          const Icon(
-                            Icons.business,
-                            size: 12,
-                            color: AppTheme.mediumBlue,
-                          ),
-                          const SizedBox(width: 4),
-                          Text(
-                            post.author.organization ?? '',
-                            style: GoogleFonts.inter(
-                              fontSize: 12,
-                              color: AppTheme.mediumBlue,
+                            const SizedBox(width: 4),
+                            Text(
+                              post.author.location!,
+                              style: GoogleFonts.inter(
+                                fontSize: 12,
+                                color: AppTheme.darkGray,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
+                          ],
+                        ),
+                      if (post.author.location != null && post.author.location!.isNotEmpty)
+                        const SizedBox(height: 2),
+                      if (post.author.organization != null && post.author.organization!.isNotEmpty)
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.business,
+                              size: 12,
+                              color: Color(0xFFFFB700),
+                            ),
+                            const SizedBox(width: 4),
+                            Text(
+                              post.author.organization!,
+                              style: GoogleFonts.inter(
+                                fontSize: 12,
+                                color: AppTheme.darkGray,
+                              ),
+                            ),
+                          ],
+                        ),
                     ],
                   ),
                 ),
@@ -162,7 +170,7 @@ class PostCard extends StatelessWidget {
               children: [
                 if (post.likeCount > 0) ...[
                   const Icon(
-                    Icons.favorite_border,
+                    Icons.favorite,
                     size: 18,
                     color: AppTheme.mediumBlue,
                   ),
@@ -199,27 +207,33 @@ class PostCard extends StatelessWidget {
 
   Widget _buildPostTypeTag(String category) {
     Color backgroundColor;
+    Color borderColor;
     String label;
 
     switch (category.toLowerCase()) {
       case 'discussion':
-        backgroundColor = AppTheme.yellowTag;
+        backgroundColor = const Color(0xFFFFF9E6);
+        borderColor = const Color(0xFFFFB700);
         label = 'Discussion';
         break;
       case 'question':
-        backgroundColor = const Color(0xFFE0E7FF);
+        backgroundColor = const Color(0xFFF3E8FF);
+        borderColor = const Color(0xFF8B5CF6);
         label = 'Question';
         break;
       case 'advice':
-        backgroundColor = const Color(0xFFD1FAE5);
+        backgroundColor = const Color(0xFFECFDF5);
+        borderColor = const Color(0xFF10B981);
         label = 'Advice';
         break;
       case 'announcement':
-        backgroundColor = const Color(0xFFFEF3C7);
+        backgroundColor = const Color(0xFFF0FDF4);
+        borderColor = const Color(0xFF22C55E);
         label = 'Announcement';
         break;
       default:
-        backgroundColor = AppTheme.yellowTag;
+        backgroundColor = const Color(0xFFFFF9E6);
+        borderColor = const Color(0xFFFFB700);
         label = 'Discussion';
         break;
     }
@@ -228,7 +242,8 @@ class PostCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
         color: backgroundColor,
-        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: borderColor, width: 1),
+        borderRadius: BorderRadius.circular(16),
       ),
       child: Text(
         label,
