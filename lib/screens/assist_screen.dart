@@ -6,8 +6,8 @@ import '../widgets/suggestion_chips.dart';
 import '../widgets/chat_input.dart';
 import '../widgets/custom_scaffold.dart';
 
-class TodayScreen extends StatelessWidget {
-  const TodayScreen({super.key});
+class AssistScreen extends StatelessWidget {
+  const AssistScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

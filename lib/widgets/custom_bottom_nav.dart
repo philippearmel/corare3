@@ -55,20 +55,11 @@ class CustomBottomNav extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: isSelected
-                  ? AppTheme.lightBlueBackground
-                  : Colors.transparent,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Icon(
+          Icon(
               isSelected ? filledIcon : outlineIcon,
               color: AppTheme.mediumBlue,
-              size: 24,
+              size: 32,
             ),
-          ),
           Text(
             label,
             style: GoogleFonts.inter(

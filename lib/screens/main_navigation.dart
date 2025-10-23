@@ -20,7 +20,7 @@ class _MainNavigationState extends State<MainNavigation> {
     const FeedScreen(),
     const PeersScreen(),
     const ChatScreen(),
-    const TodayScreen(),
+    const AssistScreen(),
   ];
 
   @override

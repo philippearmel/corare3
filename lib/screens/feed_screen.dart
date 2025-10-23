@@ -24,7 +24,8 @@ class _FeedScreenState extends State<FeedScreen> {
       appBar: const AppHeader(),
       body: Column(
         children: [
-          // Tab selector
+          // Tab selector hidden for now
+          /*
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
             child: Row(
@@ -34,7 +35,8 @@ class _FeedScreenState extends State<FeedScreen> {
                 _buildTab(1, 'Popular'),
               ],
             ),
-          ),
+          ), */
+          const SizedBox(height: 20),
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.symmetric(horizontal: 20),
