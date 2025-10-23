@@ -35,11 +35,11 @@ class CustomBottomNav extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildNavItem(0, Icons.home_outlined, 'Today'),
-              _buildNavItem(1, Icons.people_outline, 'Peers'),
+              _buildNavItem(0, Icons.home_outlined, Icons.home, 'Today'),
+              _buildNavItem(1, Icons.people_outline, Icons.people, 'Peers'),
               const SizedBox(width: 40), // Space for FAB
-              _buildNavItem(2, Icons.chat_bubble_outline, 'Chat'),
-              _buildNavItem(3, Icons.assistant_outlined, 'Assist'),
+              _buildNavItem(2, Icons.chat_bubble_outline, Icons.chat_bubble, 'Chat'),
+              _buildNavItem(3, Icons.assistant_outlined, Icons.assistant, 'Assist'),
             ],
           ),
         ),
@@ -47,7 +47,7 @@ class CustomBottomNav extends StatelessWidget {
     );
   }
 
-  Widget _buildNavItem(int index, IconData icon, String label) {
+  Widget _buildNavItem(int index, IconData outlineIcon, IconData filledIcon, String label) {
     final isSelected = currentIndex == index;
 
     return GestureDetector(
@@ -64,7 +64,7 @@ class CustomBottomNav extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(
-              icon,
+              isSelected ? filledIcon : outlineIcon,
               color: isSelected ? AppTheme.primaryBlue : AppTheme.mediumBlue,
               size: 24,
             ),
