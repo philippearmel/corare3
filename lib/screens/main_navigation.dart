@@ -35,12 +35,44 @@ class _MainNavigationState extends State<MainNavigation> {
           });
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Handle FAB action - could be create post, new chat, etc.
-        },
-        backgroundColor: AppTheme.primaryBlue,
-        child: const Icon(Icons.add, color: AppTheme.white),
+      floatingActionButton: SizedBox(
+        width: 75,
+        height: 75,
+        child: Container(
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: [
+                AppTheme.blueGradientStart,
+                AppTheme.blueGradientEnd,
+              ],
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 8,
+                offset: Offset(0, 4),
+              ),
+            ],
+          ),
+          child: Material(
+            color: Colors.transparent,
+            shape: const CircleBorder(),
+            child: InkWell(
+              borderRadius: BorderRadius.circular(37.5),
+              onTap: () {
+                // Handle FAB action - could be create post, new chat, etc.
+              },
+              child: const SizedBox(
+                width: 75,
+                height: 75,
+                child: Icon(Icons.add, color: AppTheme.white, size: 32),
+              ),
+            ),
+          ),
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
