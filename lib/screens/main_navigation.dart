@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import '../widgets/custom_bottom_nav.dart';
-import 'today_screen.dart';
+import 'assist_screen.dart';
 import 'peers_screen.dart';
 import 'chat_screen.dart';
 import 'feed_screen.dart';
