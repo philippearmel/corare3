@@ -2,6 +2,10 @@ import '../models/user.dart';
 import '../models/feed.dart';
 
 class FeedData {
+  // Store post states for persistence across navigation
+  static final Map<String, bool> _postLikes = {};
+  static final Map<String, int> _postLikeCounts = {};
+  
   // Feed has its own user definitions embedded in posts and comments
   static final User _emilyWalker = User(
     id: 'feed_user_1',
@@ -59,16 +63,21 @@ class FeedData {
   static final User _marcelSupa = User(
     id: 'feed_user_4',
     name: 'Marcel Supa',
-    location: 'paris',
+    location: 'Paris',
+    organization: 'Tech Solutions',
+    bio: 'Software developer passionate about health tech and community building.',
+    condition: 'Eczema',
+    diagnosedSince: '2021',
     memberSince: '2 weeks',
     isOnline: false,
-    interests: ['🎵 Music', '🎨 Art'],
+    avatar: 'https://img.freepik.com/free-photo/young-man-white-shirt-looking-camera_273609-7092.jpg',
+    interests: ['🎵 Music', '🎨 Art', '💻 Technology'],
   );
 
   static final User _sarahChen = User(
     id: 'feed_user_5',
     name: 'Sarah Chen',
-    location: 'manchester',
+    location: 'Manchester',
     organization: 'Health Foundation',
     bio: 'Registered nurse with 8 years experience in dermatology. Passionate about patient education and community support.',
     condition: 'Psoriasis',
@@ -82,7 +91,8 @@ class FeedData {
   static final User _jamesWilson = User(
     id: 'feed_user_6',
     name: 'James Wilson',
-    location: 'birmingham',
+    location: 'Birmingham',
+    organization: 'Digital Solutions Ltd',
     bio: 'Software developer who found relief through lifestyle changes. Love sharing practical tips with the community.',
     condition: 'Eczema',
     diagnosedSince: '2019',
@@ -95,7 +105,8 @@ class FeedData {
   static final User _lisaRodriguez = User(
     id: 'feed_user_7',
     name: 'Lisa Rodriguez',
-    location: 'glasgow',
+    location: 'Glasgow',
+    organization: 'Family Support Network',
     bio: 'Mother of two, managing my condition while raising kids. Always looking for family-friendly solutions.',
     condition: 'Atopic Dermatitis',
     diagnosedSince: '2017',
@@ -230,6 +241,53 @@ class FeedData {
       isLiked: false,
     ),
   ];
+
+  // Methods to manage post likes
+  static bool isPostLiked(String postId) {
+    return _postLikes[postId] ?? false;
+  }
+
+  static int getPostLikeCount(String postId) {
+    return _postLikeCounts[postId] ?? 0;
+  }
+
+  static void togglePostLike(String postId) {
+    final currentLiked = _postLikes[postId] ?? false;
+    final currentCount = _postLikeCounts[postId] ?? 0;
+    
+    _postLikes[postId] = !currentLiked;
+    _postLikeCounts[postId] = currentLiked ? currentCount - 1 : currentCount + 1;
+  }
+
+  static void initializePostStates() {
+    for (final post in posts) {
+      _postLikes[post.id] = post.isLiked;
+      _postLikeCounts[post.id] = post.likeCount;
+    }
+  }
+
+  // Comment management methods
+  static void addComment(String postId, String content, User author) {
+    final comment = Comment(
+      id: 'c_${DateTime.now().millisecondsSinceEpoch}',
+      author: author,
+      content: content,
+      createdAt: DateTime.now(),
+    );
+
+    if (postComments[postId] == null) {
+      postComments[postId] = [];
+    }
+    postComments[postId]!.add(comment);
+
+    // Update the post's comment count
+    final post = posts.firstWhere((p) => p.id == postId);
+    post.commentCount = postComments[postId]!.length;
+  }
+
+  static int getCommentCount(String postId) {
+    return postComments[postId]?.length ?? 0;
+  }
 
   // Comments storage - Map of postId to list of comments
   static final Map<String, List<Comment>> postComments = {

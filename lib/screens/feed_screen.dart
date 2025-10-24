@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../theme/app_theme.dart';
 import '../widgets/app_header.dart';
 import '../widgets/post_card.dart';
 import '../data/feed_data.dart';
@@ -13,7 +12,19 @@ class FeedScreen extends StatefulWidget {
 }
 
 class _FeedScreenState extends State<FeedScreen> {
-  int _selectedTab = 0;
+  @override
+  void initState() {
+    super.initState();
+    // Initialize post states for persistent like functionality
+    FeedData.initializePostStates();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Refresh the screen when returning from other screens
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,52 +61,6 @@ class _FeedScreenState extends State<FeedScreen> {
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildTab(int index, String label) {
-    final isSelected = _selectedTab == index;
-
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          _selectedTab = index;
-        });
-      },
-      child: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: isSelected ? 40 : 24,
-          vertical: 12,
-        ),
-        decoration: BoxDecoration(
-          gradient: isSelected
-              ? const LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [
-                    AppTheme.blueGradientStart,
-                    AppTheme.blueGradientEnd,
-                  ],
-                )
-              : null,
-          color: isSelected ? null : Colors.transparent,
-          borderRadius: BorderRadius.circular(25),
-          border: isSelected
-              ? null
-              : Border.all(
-                  color: AppTheme.lightGray.withValues(alpha: 0.3),
-                  width: 1,
-                ),
-        ),
-        child: Text(
-          label,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-            color: isSelected ? AppTheme.white : AppTheme.darkGray,
-          ),
-        ),
       ),
     );
   }

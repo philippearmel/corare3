@@ -4,13 +4,61 @@ import '../theme/app_theme.dart';
 import '../widgets/navigation_app_bar.dart';
 import '../models/feed.dart';
 import '../data/feed_data.dart';
+import '../data/user_data.dart';
 import '../widgets/custom_scaffold.dart';
 import '../widgets/post_card.dart';
 
-class PostDetailScreen extends StatelessWidget {
+class PostDetailScreen extends StatefulWidget {
   final Post post;
 
   const PostDetailScreen({super.key, required this.post});
+
+  @override
+  State<PostDetailScreen> createState() => _PostDetailScreenState();
+}
+
+class _PostDetailScreenState extends State<PostDetailScreen> {
+  final TextEditingController _commentController = TextEditingController();
+  late Post post;
+
+  @override
+  void initState() {
+    super.initState();
+    post = widget.post;
+  }
+
+  @override
+  void dispose() {
+    _commentController.dispose();
+    super.dispose();
+  }
+
+  void _addComment() {
+    final commentText = _commentController.text.trim();
+    if (commentText.isEmpty) return;
+
+    FeedData.addComment(post.id, commentText, UserData.currentUser);
+    _commentController.clear();
+    setState(() {
+      // Update the post's comment count
+      post.commentCount = FeedData.getCommentCount(post.id);
+    });
+  }
+
+  String _getTimeAgo(DateTime dateTime) {
+    final now = DateTime.now();
+    final difference = now.difference(dateTime);
+
+    if (difference.inDays > 0) {
+      return '${difference.inDays} day${difference.inDays == 1 ? '' : 's'} ago';
+    } else if (difference.inHours > 0) {
+      return '${difference.inHours} hour${difference.inHours == 1 ? '' : 's'} ago';
+    } else if (difference.inMinutes > 0) {
+      return '${difference.inMinutes} minute${difference.inMinutes == 1 ? '' : 's'} ago';
+    } else {
+      return 'Just now';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +66,7 @@ class PostDetailScreen extends StatelessWidget {
     final comments = FeedData.postComments[post.id] ?? [];
 
     return CustomScaffold(
-      appBar: const NavigationAppBar(title: 'Posts'),
+      appBar: const NavigationAppBar(title: 'Today'),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -81,6 +129,7 @@ class PostDetailScreen extends StatelessWidget {
                       children: [
                         Expanded(
                           child: TextField(
+                            controller: _commentController,
                             decoration: InputDecoration(
                               hintText: 'Add a comment',
                               hintStyle: GoogleFonts.inter(
@@ -94,6 +143,7 @@ class PostDetailScreen extends StatelessWidget {
                                 vertical: 12,
                               ),
                             ),
+                            onSubmitted: (_) => _addComment(),
                           ),
                         ),
                         Container(
@@ -110,7 +160,7 @@ class PostDetailScreen extends StatelessWidget {
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
-                            onPressed: () {},
+                            onPressed: _addComment,
                             icon: const Icon(
                               Icons.send,
                               color: AppTheme.white,
@@ -200,6 +250,14 @@ class PostDetailScreen extends StatelessWidget {
                     fontSize: 14,
                     color: AppTheme.darkGray,
                     height: 1.4,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  _getTimeAgo(comment.createdAt),
+                  style: GoogleFonts.inter(
+                    fontSize: 12,
+                    color: AppTheme.lightGray,
                   ),
                 ),
               ],
