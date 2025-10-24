@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
-import '../widgets/navigation_app_bar.dart';
+import '../widgets/back_navigation_app_bar.dart';
 import '../models/feed.dart';
 import '../data/feed_data.dart';
 import '../data/user_data.dart';
@@ -66,7 +66,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
     final comments = FeedData.postComments[post.id] ?? [];
 
     return CustomScaffold(
-      appBar: const NavigationAppBar(title: 'Today'),
+      appBar: const BackNavigationAppBar(title: 'Today'),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),
