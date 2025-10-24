@@ -239,7 +239,7 @@ class PeerCard extends StatelessWidget {
                         const Icon(Icons.link, size: 18, color: AppTheme.white),
                         const SizedBox(width: 8),
                         Text(
-                          'Connect',
+                          matchingCandidate.wantsToConnect ? 'Accept' : 'Connect',
                           style: GoogleFonts.inter(
                             color: AppTheme.white,
                             fontWeight: FontWeight.w600,

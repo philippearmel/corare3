@@ -40,8 +40,8 @@ class PeerDetailScreen extends StatelessWidget {
                       children: [
                         // Large profile picture
                         Container(
-                          width: 100,
-                          height: 100,
+                          width: 70,
+                          height: 70,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: AppTheme.textMediumBlue,
@@ -51,16 +51,16 @@ class PeerDetailScreen extends StatelessWidget {
                               ? ClipOval(
                                   child: Image.network(
                                     matchingCandidate.user.avatar!,
-                                    width: 100,
-                                    height: 100,
+                                    width: 70,
+                                    height: 70,
                                     fit: BoxFit.cover,
                                     loadingBuilder: (context, child, loadingProgress) {
                                       if (loadingProgress == null) {
                                         return child;
                                       }
                                       return const SizedBox(
-                                        width: 100,
-                                        height: 100,
+                                        width: 70,
+                                        height: 70,
                                         child: Center(
                                           child: CircularProgressIndicator(
                                             strokeWidth: 2,
@@ -73,7 +73,7 @@ class PeerDetailScreen extends StatelessWidget {
                                       return const Icon(
                                         Icons.person,
                                         color: AppTheme.white,
-                                        size: 40,
+                                        size: 24,
                                       );
                                     },
                                   ),
@@ -81,10 +81,10 @@ class PeerDetailScreen extends StatelessWidget {
                               : const Icon(
                                   Icons.person,
                                   color: AppTheme.white,
-                                  size: 40,
+                                  size: 24,
                                 ),
                         ),
-                        const SizedBox(width: 20),
+                        const SizedBox(width: 12),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,56 +92,56 @@ class PeerDetailScreen extends StatelessWidget {
                               Text(
                                 matchingCandidate.user.name,
                                 style: GoogleFonts.inter(
-                                  fontSize: 24,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                   color: AppTheme.textDarkGray,
                                 ),
                               ),
-                              const SizedBox(height: 8),
+                              const SizedBox(height: 4),
                               if (matchingCandidate.user.location != null && matchingCandidate.user.location!.isNotEmpty)
                                 Row(
                                   children: [
                                     const Icon(
                                       Icons.location_on,
-                                      size: 16,
+                                      size: 14,
                                       color: AppTheme.orange,
                                     ),
-                                    const SizedBox(width: 6),
+                                    const SizedBox(width: 4),
                                     Text(
                                       matchingCandidate.user.location!,
                                       style: GoogleFonts.inter(
-                                        fontSize: 16,
+                                        fontSize: 12,
                                         color: AppTheme.textDarkGray,
                                       ),
                                     ),
                                   ],
                                 ),
-                              if (matchingCandidate.user.organization != null && matchingCandidate.user.organization!.isNotEmpty) ...[
-                                const SizedBox(height: 4),
+                              if (matchingCandidate.user.location != null && matchingCandidate.user.location!.isNotEmpty)
+                                const SizedBox(height: 2),
+                              if (matchingCandidate.user.organization != null && matchingCandidate.user.organization!.isNotEmpty)
                                 Row(
                                   children: [
                                     const Icon(
                                       Icons.business,
-                                      size: 16,
+                                      size: 14,
                                       color: AppTheme.orange,
                                     ),
-                                    const SizedBox(width: 6),
+                                    const SizedBox(width: 4),
                                     Text(
                                       matchingCandidate.user.organization!,
                                       style: GoogleFonts.inter(
-                                        fontSize: 16,
+                                        fontSize: 12,
                                         color: AppTheme.textDarkGray,
                                       ),
                                     ),
                                   ],
                                 ),
-                              ],
-                              const SizedBox(height: 8),
+                              const SizedBox(height: 2),
                               Text(
                                 'Member since ${matchingCandidate.user.memberSince}',
                                 style: GoogleFonts.inter(
-                                  fontSize: 14,
-                                  color: AppTheme.textLightGray,
+                                  fontSize: 12,
+                                  color: AppTheme.textGrayTime,
                                 ),
                               ),
                             ],
@@ -150,16 +150,16 @@ class PeerDetailScreen extends StatelessWidget {
                         // Condition tag
                         if (matchingCandidate.user.condition != null && matchingCandidate.user.condition!.isNotEmpty)
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                             decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(color: AppTheme.yellowTag, width: 1),
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(16),
                             ),
                             child: Text(
                               matchingCandidate.user.condition!,
                               style: GoogleFonts.inter(
-                                fontSize: 14,
+                                fontSize: 12,
                                 color: AppTheme.yellowTag,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -167,159 +167,126 @@ class PeerDetailScreen extends StatelessWidget {
                           ),
                       ],
                     ),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 16),
                     // Bio section
                     if (matchingCandidate.user.bio != null && matchingCandidate.user.bio!.isNotEmpty) ...[
                       Text(
-                        'About',
-                        style: GoogleFonts.inter(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: AppTheme.textDarkGray,
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      Text(
                         matchingCandidate.user.bio!,
                         style: GoogleFonts.inter(
-                          fontSize: 16,
+                          fontSize: 14,
                           color: AppTheme.textDarkGray,
-                          height: 1.5,
+                          height: 1.4,
                         ),
                       ),
-                      const SizedBox(height: 24),
+                      const SizedBox(height: 16),
                     ],
+                    // Horizontal divider
+                    Container(
+                      margin: const EdgeInsets.symmetric(vertical: 16),
+                      height: 1,
+                      color: Colors.grey.withValues(alpha: 0.2),
+                    ),
                     // Interests section
                     if (matchingCandidate.user.interests != null && matchingCandidate.user.interests!.isNotEmpty) ...[
-                      Text(
-                        'Interests',
-                        style: GoogleFonts.inter(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: AppTheme.textDarkGray,
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Interests',
+                          style: GoogleFonts.inter(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: AppTheme.textDarkGray,
+                          ),
                         ),
                       ),
-                      const SizedBox(height: 12),
-                      Wrap(
-                        spacing: 12,
-                        runSpacing: 12,
-                        children: matchingCandidate.user.interests!.map((interest) {
+                      const SizedBox(height: 8),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Wrap(
+                          alignment: WrapAlignment.start,
+                          spacing: 8,
+                          runSpacing: 8,
+                          children: matchingCandidate.user.interests!.map((interest) {
                           return Container(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 10,
+                              horizontal: 12,
+                              vertical: 6,
                             ),
                             decoration: BoxDecoration(
                               color: AppTheme.lightBlueBackground,
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(12),
                             ),
                             child: Text(
                               interest,
                               style: GoogleFonts.inter(
-                                fontSize: 14,
+                                fontSize: 12,
                                 color: AppTheme.textDarkGray,
-                                fontWeight: FontWeight.w500,
                               ),
                             ),
                           );
-                        }).toList(),
+                          }).toList(),
+                        ),
                       ),
-                      const SizedBox(height: 24),
+                      const SizedBox(height: 16),
                     ],
+                    // Horizontal divider
+                    Container(
+                      margin: const EdgeInsets.symmetric(vertical: 16),
+                      height: 1,
+                      color: Colors.grey.withValues(alpha: 0.2),
+                    ),
                     // Action buttons
                     Row(
                       children: [
-                        Expanded(
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              borderRadius: BorderRadius.circular(20),
-                              onTap: () {
-                                // TODO: Implement connect functionality
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text('Connect request sent!'),
-                                    backgroundColor: AppTheme.primaryBlue,
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                                decoration: BoxDecoration(
-                                  gradient: const LinearGradient(
-                                    colors: [AppTheme.blueGradientStart, AppTheme.blueGradientEnd],
-                                    begin: Alignment.centerLeft,
-                                    end: Alignment.centerRight,
-                                  ),
-                                  borderRadius: BorderRadius.circular(20),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: AppTheme.primaryBlue.withValues(alpha: 0.3),
-                                      blurRadius: 8,
-                                      offset: const Offset(0, 2),
-                                    ),
-                                  ],
+                        Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(20),
+                            onTap: () {
+                              // TODO: Implement connect functionality
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Connect request sent!'),
+                                  backgroundColor: AppTheme.primaryBlue,
                                 ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Icon(Icons.link, size: 20, color: AppTheme.white),
-                                    const SizedBox(width: 8),
-                                    Text(
-                                      'Connect',
-                                      style: GoogleFonts.inter(
-                                        color: AppTheme.white,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ],
+                              );
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                              decoration: BoxDecoration(
+                                gradient: const LinearGradient(
+                                  colors: [AppTheme.blueGradientStart, AppTheme.blueGradientEnd],
+                                  begin: Alignment.centerLeft,
+                                  end: Alignment.centerRight,
                                 ),
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: AppTheme.primaryBlue.withValues(alpha: 0.3),
+                                    blurRadius: 8,
+                                    offset: const Offset(0, 2),
+                                  ),
+                                ],
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Icon(Icons.link, size: 18, color: AppTheme.white),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    matchingCandidate.wantsToConnect ? 'Accept' : 'Connect',
+                                    style: GoogleFonts.inter(
+                                      color: AppTheme.white,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
                         ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              borderRadius: BorderRadius.circular(20),
-                              onTap: () {
-                                // TODO: Implement chat functionality
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text('Starting chat...'),
-                                    backgroundColor: AppTheme.primaryBlue,
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(color: AppTheme.primaryBlue, width: 2),
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Icon(Icons.chat_bubble_outline, size: 20, color: AppTheme.primaryBlue),
-                                    const SizedBox(width: 8),
-                                    Text(
-                                      'Chat',
-                                      style: GoogleFonts.inter(
-                                        color: AppTheme.primaryBlue,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                        const SizedBox(width: 12),
+                        
                       ],
                     ),
                   ],
