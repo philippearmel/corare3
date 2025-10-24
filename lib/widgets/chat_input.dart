@@ -19,7 +19,7 @@ class ChatInput extends StatelessWidget {
         children: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.attach_file, color: AppTheme.mediumBlue),
+            icon: const Icon(Icons.attach_file, color: AppTheme.textMediumBlue),
           ),
           Expanded(
             child: Container(
@@ -32,7 +32,7 @@ class ChatInput extends StatelessWidget {
                 decoration: InputDecoration(
                   hintText: 'Ask a question',
                   hintStyle: TextStyle(
-                    color: AppTheme.mediumBlue,
+                    color: AppTheme.textMediumBlue,
                     fontSize: 16,
                   ),
                   border: InputBorder.none,
@@ -42,7 +42,7 @@ class ChatInput extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.mic, color: AppTheme.mediumBlue),
+            icon: const Icon(Icons.mic, color: AppTheme.textMediumBlue),
           ),
           Container(
             margin: const EdgeInsets.only(left: 8),

@@ -91,7 +91,7 @@ class _PostCardState extends State<PostCard> {
                 height: 70,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: AppTheme.mediumBlue,
+                  color: AppTheme.textMediumBlue,
                 ),
                 child:
                     post.author.avatar != null &&
@@ -143,7 +143,7 @@ class _PostCardState extends State<PostCard> {
                       style: GoogleFonts.inter(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
-                        color: AppTheme.darkGray,
+                        color: AppTheme.textDarkGray,
                       ),
                     ),
                     const SizedBox(height: 2),
@@ -160,7 +160,7 @@ class _PostCardState extends State<PostCard> {
                             post.author.location!,
                             style: GoogleFonts.inter(
                               fontSize: 12,
-                              color: AppTheme.darkGray,
+                              color: AppTheme.textDarkGray,
                             ),
                           ),
                         ],
@@ -180,7 +180,7 @@ class _PostCardState extends State<PostCard> {
                             post.author.organization!,
                             style: GoogleFonts.inter(
                               fontSize: 12,
-                              color: AppTheme.darkGray,
+                              color: AppTheme.textDarkGray,
                             ),
                           ),
                         ],
@@ -198,7 +198,7 @@ class _PostCardState extends State<PostCard> {
             style: GoogleFonts.inter(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: AppTheme.darkGray,
+              color: AppTheme.textDarkGray,
               height: 1.3,
             ),
           ),
@@ -208,7 +208,7 @@ class _PostCardState extends State<PostCard> {
             post.content,
             style: GoogleFonts.inter(
               fontSize: 14,
-              color: AppTheme.darkGray,
+              color: AppTheme.textDarkGray,
               height: 1.4,
             ),
             maxLines: widget.showFullContent ? null : 3,
@@ -220,7 +220,7 @@ class _PostCardState extends State<PostCard> {
             _getTimeAgo(post.createdAt),
             style: GoogleFonts.inter(
               fontSize: 12,
-              color: AppTheme.darkGray,
+              color: AppTheme.textGrayTime,
             ),
           ),
           const SizedBox(height: 16),
@@ -242,7 +242,7 @@ class _PostCardState extends State<PostCard> {
                       '$_likeCount',
                       style: GoogleFonts.inter(
                         fontSize: 14,
-                        color: AppTheme.darkGray,
+                        color: AppTheme.textDarkGray,
                       ),
                     ),
                   ],
@@ -259,7 +259,7 @@ class _PostCardState extends State<PostCard> {
                 '$_commentCount',
                 style: GoogleFonts.inter(
                   fontSize: 14,
-                  color: AppTheme.darkGray,
+                  color: AppTheme.textDarkGray,
                 ),
               ),
             ],

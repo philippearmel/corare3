@@ -20,10 +20,11 @@ class AppTheme {
   static const Color orange = Color(0xFFFFB700);
 
   // Text Colors
-  static const Color darkGray = Color(0xFF333333);
-  static const Color lightGray = Color(0xFFF4F4F4);
-  static const Color mediumBlue = Color(0xFF778FC2);
-  static const Color mediumBlueDark = Color(0xFF687EC5);
+  static const Color textDarkGray = Color(0xFF333333);
+  static const Color textLightGray = Color(0xFFF4F4F4);
+  static const Color textMediumBlue = Color(0xFF778FC2);
+  static const Color textMediumBlueDark = Color(0xFF687EC5);
+  static const Color textGrayTime = Colors.grey;
 
   // Utility Colors
   static const Color white = Color(0xFFFFFFFF);
@@ -51,7 +52,7 @@ class AppTheme {
         titleTextStyle: GoogleFonts.inter(
           fontSize: 18,
           fontWeight: FontWeight.w600,
-          color: darkGray,
+          color: textDarkGray,
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -77,11 +78,11 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: lightGray),
+          borderSide: const BorderSide(color: textLightGray),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: lightGray),
+          borderSide: const BorderSide(color: textLightGray),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),

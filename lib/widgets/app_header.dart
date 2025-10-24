@@ -87,7 +87,7 @@ class AppHeader extends StatelessWidget {
                   height: 44,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: AppTheme.mediumBlue,
+                    color: AppTheme.textMediumBlue,
                     border: Border.all(color: AppTheme.white, width: 2),
                     boxShadow: [
                       BoxShadow(
@@ -100,7 +100,7 @@ class AppHeader extends StatelessWidget {
                   child: ClipOval(
                     child: Container(
                       decoration: const BoxDecoration(
-                        color: AppTheme.mediumBlue,
+                        color: AppTheme.textMediumBlue,
                       ),
                       child: const Icon(
                         Icons.person,

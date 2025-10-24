@@ -28,7 +28,7 @@ class NavigationAppBar extends StatelessWidget implements PreferredSizeWidget {
             onPressed: onBackPressed ?? () => Navigator.of(context).pop(),
             icon: const Icon(
               Icons.arrow_back_ios,
-              color: AppTheme.darkGray,
+              color: AppTheme.textDarkGray,
               size: 20,
             ),
           ),
@@ -40,7 +40,7 @@ class NavigationAppBar extends StatelessWidget implements PreferredSizeWidget {
             style: GoogleFonts.inter(
               fontSize: 18,
               fontWeight: FontWeight.w600,
-              color: AppTheme.darkGray,
+              color: AppTheme.textDarkGray,
             ),
           ),
         ),

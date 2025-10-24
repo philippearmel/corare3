@@ -25,7 +25,7 @@ class SuggestionChips extends StatelessWidget {
             color: AppTheme.white,
             borderRadius: BorderRadius.circular(25),
             border: Border.all(
-              color: AppTheme.lightGray.withValues(alpha: 0.3),
+              color: AppTheme.textLightGray.withValues(alpha: 0.3),
               width: 1,
             ),
           ),
@@ -34,7 +34,7 @@ class SuggestionChips extends StatelessWidget {
             style: GoogleFonts.inter(
               fontSize: 14,
               fontWeight: FontWeight.w500,
-              color: AppTheme.darkGray,
+              color: AppTheme.textDarkGray,
             ),
           ),
         );

@@ -106,7 +106,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                         style: GoogleFonts.inter(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: AppTheme.darkGray,
+                          color: AppTheme.textDarkGray,
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -133,7 +133,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                             decoration: InputDecoration(
                               hintText: 'Add a comment',
                               hintStyle: GoogleFonts.inter(
-                                color: AppTheme.mediumBlue,
+                                color: AppTheme.textMediumBlue,
                               ),
                               border: InputBorder.none,
                               enabledBorder: InputBorder.none,
@@ -191,7 +191,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
             height: 40,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: AppTheme.mediumBlue,
+              color: AppTheme.textMediumBlue,
             ),
             child: comment.author.avatar != null && comment.author.avatar!.isNotEmpty
                 ? ClipOval(
@@ -240,7 +240,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                   style: GoogleFonts.inter(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
-                    color: AppTheme.darkGray,
+                    color: AppTheme.textDarkGray,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -248,7 +248,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                   comment.content,
                   style: GoogleFonts.inter(
                     fontSize: 14,
-                    color: AppTheme.darkGray,
+                    color: AppTheme.textDarkGray,
                     height: 1.4,
                   ),
                 ),
@@ -257,7 +257,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                   _getTimeAgo(comment.createdAt),
                   style: GoogleFonts.inter(
                     fontSize: 12,
-                    color: AppTheme.lightGray,
+                    color: AppTheme.textLightGray,
                   ),
                 ),
               ],

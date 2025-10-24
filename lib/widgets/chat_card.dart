@@ -33,7 +33,7 @@ class ChatCard extends StatelessWidget {
                 height: 50,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: AppTheme.mediumBlue,
+                  color: AppTheme.textMediumBlue,
                 ),
                 child: const Icon(
                   Icons.person,
@@ -66,7 +66,7 @@ class ChatCard extends StatelessWidget {
                   style: GoogleFonts.inter(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: AppTheme.darkGray,
+                    color: AppTheme.textDarkGray,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -74,7 +74,7 @@ class ChatCard extends StatelessWidget {
                   chat.lastMessage ?? '',
                   style: GoogleFonts.inter(
                     fontSize: 14,
-                    color: AppTheme.mediumBlue,
+                    color: AppTheme.textMediumBlue,
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -84,7 +84,7 @@ class ChatCard extends StatelessWidget {
                   '${chat.isUnread ? 'New message' : ''} • ${chat.lastMessageTime != null ? _formatTime(chat.lastMessageTime!) : ''}',
                   style: GoogleFonts.inter(
                     fontSize: 12,
-                    color: AppTheme.lightGray,
+                    color: AppTheme.textLightGray,
                   ),
                 ),
               ],

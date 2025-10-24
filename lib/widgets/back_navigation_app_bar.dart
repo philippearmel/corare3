@@ -47,7 +47,7 @@ class BackNavigationAppBar extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     child: const Icon(
                       Icons.arrow_back_ios,
-                      color: AppTheme.mediumBlueDark,
+                      color: AppTheme.textMediumBlueDark,
                       size: 20,
                     ),
                   ),
@@ -58,7 +58,7 @@ class BackNavigationAppBar extends StatelessWidget {
                   style: GoogleFonts.inter(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
-                    color: AppTheme.mediumBlueDark,
+                    color: AppTheme.textMediumBlueDark,
                   ),
                 ),
               ],
@@ -71,7 +71,7 @@ class BackNavigationAppBar extends StatelessWidget {
                   height: 44,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: AppTheme.mediumBlue,
+                    color: AppTheme.textMediumBlue,
                     border: Border.all(color: AppTheme.white, width: 2),
                     boxShadow: [
                       BoxShadow(
@@ -84,7 +84,7 @@ class BackNavigationAppBar extends StatelessWidget {
                   child: ClipOval(
                     child: Container(
                       decoration: const BoxDecoration(
-                        color: AppTheme.mediumBlue,
+                        color: AppTheme.textMediumBlue,
                       ),
                       child: const Icon(
                         Icons.person,

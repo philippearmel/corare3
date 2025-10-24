@@ -27,7 +27,7 @@ class AssistScreen extends StatelessWidget {
                     style: GoogleFonts.inter(
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
-                      color: AppTheme.darkGray,
+                      color: AppTheme.textDarkGray,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -63,7 +63,7 @@ class AssistScreen extends StatelessWidget {
                       child: Text(
                         'Chat area will appear here',
                         style: TextStyle(
-                          color: AppTheme.mediumBlue,
+                          color: AppTheme.textMediumBlue,
                           fontSize: 16,
                         ),
                       ),
