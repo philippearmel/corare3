@@ -8,6 +8,15 @@ class AppTheme {
   static const Color blueGradientStart = Color(0xFF3288F2);
   static const Color blueGradientEnd = Color(0xFF2404FB);
 
+  // Green Gradient Colors
+  //static const Color  greenGradientStart = Color(0xFF6BCB77);//0xFF10B981
+  //static const Color greenGradientEnd = Color(0xFF10B981); //Color(0xFF059669)
+
+  static const Color  greenGradientStart = Color(0xFF6BCB77);//
+  static const Color greenGradientEnd = Color(0xFF059669); //Color()
+  
+  
+
   // Primary Colors
   static const Color primaryBlue = Color(
     0xFF2404FB,

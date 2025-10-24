@@ -254,15 +254,19 @@ class PeerDetailScreen extends StatelessWidget {
                             child: Container(
                               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                               decoration: BoxDecoration(
-                                gradient: const LinearGradient(
-                                  colors: [AppTheme.blueGradientStart, AppTheme.blueGradientEnd],
+                                gradient: LinearGradient(
+                                  colors: matchingCandidate.wantsToConnect 
+                                      ? [AppTheme.greenGradientStart, AppTheme.greenGradientEnd]
+                                      : [AppTheme.blueGradientStart, AppTheme.blueGradientEnd],
                                   begin: Alignment.centerLeft,
                                   end: Alignment.centerRight,
                                 ),
                                 borderRadius: BorderRadius.circular(20),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: AppTheme.primaryBlue.withValues(alpha: 0.3),
+                                    color: (matchingCandidate.wantsToConnect 
+                                        ? AppTheme.greenGradientStart 
+                                        : AppTheme.primaryBlue).withValues(alpha: 0.3),
                                     blurRadius: 8,
                                     offset: const Offset(0, 2),
                                   ),

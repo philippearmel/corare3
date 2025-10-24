@@ -25,7 +25,7 @@ class PeersData {
           '📚 Reading',
         ],
       ),
-      wantsToConnect: true,
+      wantsToConnect: false,
       matchingScore: 85,
     ),
     PeerMatchingCandidate(
@@ -42,7 +42,7 @@ class PeersData {
             "https://img.freepik.com/free-photo/good-looking-caucasian-female-with-blonde-straight-hair-wearing-glasses-denim-shirt-smiles-happily-has-good-mood-after-successful-day-university-glad-pleased-pose_176420-13174.jpg",
         interests: ['📸 Photography', '✈️ Travel', '🌿 Nature', '🎨 Art'],
       ),
-      wantsToConnect: true,
+      wantsToConnect: false,
       matchingScore: 72,
     ),
     PeerMatchingCandidate(
@@ -141,7 +141,7 @@ class PeersData {
         avatar: 'https://img.freepik.com/free-photo/beautiful-woman-with-warm-smile_176420-18827.jpg',
         interests: ['👶 Parenting', '🧘 Yoga', '🍳 Healthy Cooking', '📚 Child Development'],
       ),
-      wantsToConnect: true,
+      wantsToConnect: false,
       matchingScore: 90,
     ),
     PeerMatchingCandidate(
@@ -156,7 +156,7 @@ class PeersData {
         avatar: 'https://img.freepik.com/free-photo/man-with-beard-smiling_176420-18828.jpg',
         interests: ['💻 Technology', '♿ Accessibility', '🎮 Gaming', '🔧 DIY Projects'],
       ),
-      wantsToConnect: true,
+      wantsToConnect: false,
       matchingScore: 65,
     ),
     PeerMatchingCandidate(
