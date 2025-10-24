@@ -23,7 +23,7 @@ class PeersScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 16),
-                  child: PeerCard(user: peers[index]),
+                  child: PeerCard(matchingCandidate: peers[index]),
                 );
               },
             ),

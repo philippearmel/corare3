@@ -1,12 +1,13 @@
+import 'package:corare/models/peer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
-import '../models/user.dart';
+
 
 class PeerCard extends StatelessWidget {
-  final User user;
+  final PeerMatchingCandidate matchingCandidate;
 
-  const PeerCard({super.key, required this.user});
+  const PeerCard({super.key, required this.matchingCandidate});
 
   @override
   Widget build(BuildContext context) {
@@ -44,19 +45,6 @@ class PeerCard extends StatelessWidget {
                       size: 30,
                     ),
                   ),
-                  if (user.isOnline)
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: Container(
-                        width: 14,
-                        height: 14,
-                        decoration: const BoxDecoration(
-                          color: AppTheme.greenOnline,
-                          shape: BoxShape.circle,
-                        ),
-                      ),
-                    ),
                 ],
               ),
               const SizedBox(width: 12),
@@ -65,7 +53,7 @@ class PeerCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      user.name,
+                      matchingCandidate.user.name,
                       style: GoogleFonts.inter(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -82,7 +70,7 @@ class PeerCard extends StatelessWidget {
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          user.location ?? '',
+                          matchingCandidate.user.location ?? '',
                           style: GoogleFonts.inter(
                             fontSize: 12,
                             color: AppTheme.mediumBlue,
@@ -100,7 +88,7 @@ class PeerCard extends StatelessWidget {
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          user.organization ?? '',
+                          matchingCandidate.user.organization ?? '',
                           style: GoogleFonts.inter(
                             fontSize: 12,
                             color: AppTheme.mediumBlue,
@@ -110,7 +98,7 @@ class PeerCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      'Member since ${user.memberSince}',
+                      'Member since ${matchingCandidate.user.memberSince}',
                       style: GoogleFonts.inter(
                         fontSize: 12,
                         color: AppTheme.lightGray,
@@ -130,7 +118,7 @@ class PeerCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
-                  user.condition ?? '',
+                  matchingCandidate.user.condition ?? '',
                   style: GoogleFonts.inter(
                     fontSize: 10,
                     color: AppTheme.darkGray,
@@ -142,7 +130,7 @@ class PeerCard extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            user.bio ?? '',
+            matchingCandidate.user.bio ?? '',
             style: GoogleFonts.inter(
               fontSize: 14,
               color: AppTheme.darkGray,
@@ -151,7 +139,7 @@ class PeerCard extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           // Interests
-          if (user.interests != null && user.interests!.isNotEmpty) ...[
+          if (matchingCandidate.user.interests != null && matchingCandidate.user.interests!.isNotEmpty) ...[
             Text(
               'Interests',
               style: GoogleFonts.inter(
@@ -164,7 +152,7 @@ class PeerCard extends StatelessWidget {
             Wrap(
               spacing: 8,
               runSpacing: 8,
-              children: user.interests!.map((interest) {
+              children: matchingCandidate.user.interests!.map((interest) {
                 return Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 12,
@@ -189,37 +177,21 @@ class PeerCard extends StatelessWidget {
           // Action buttons
           Row(
             children: [
-              Expanded(
-                child: ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: const Icon(Icons.link, size: 18),
-                  label: const Text('Connect'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppTheme.primaryBlue,
-                    foregroundColor: AppTheme.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    padding: const EdgeInsets.symmetric(vertical: 12),
+              ElevatedButton.icon(
+                onPressed: () {},
+                icon: const Icon(Icons.link, size: 18),
+                label: const Text('Connect'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppTheme.primaryBlue,
+                  foregroundColor: AppTheme.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
                   ),
+                  padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                 ),
               ),
               const SizedBox(width: 12),
-              Expanded(
-                child: OutlinedButton.icon(
-                  onPressed: () {},
-                  icon: const Icon(Icons.chat_bubble_outline, size: 18),
-                  label: const Text('Chat'),
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: AppTheme.primaryBlue,
-                    side: const BorderSide(color: AppTheme.primaryBlue),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                  ),
-                ),
-              ),
+              
             ],
           ),
         ],
