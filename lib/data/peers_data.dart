@@ -12,7 +12,7 @@ class PeersData {
         location: 'liverpool',
         organization: 'Acmee Org',
         bio:
-            'First-time mom to baby Noah (3 months); learning gentle handling, bath time setups, and quick diaper-change techniques, seeking other newborn tips.',
+            'First-time mom to baby Noah (3 months); learning gentle handling, bath time setups, and quick diaper-change techniques, seeking other newborn tips.Navigating the challenges of motherhood while managing Brugada Syndrome has been both rewarding and overwhelming. I\'m passionate about creating a supportive community for parents who are dealing with chronic health conditions while raising children. Through my journey, I\'ve discovered the importance of self-care, building strong support networks, and finding joy in the small moments. I love sharing practical parenting tips, discussing health management strategies, and connecting with others who understand the unique challenges we face. When I\'m not caring for Noah, I enjoy reading parenting books, experimenting with healthy recipes that work with my dietary restrictions, and documenting our journey through photography. I believe that sharing our stories and experiences helps create understanding and reduces the isolation that often comes with chronic illness. My goal is to help other parents feel empowered and supported as they navigate their own unique paths.',
         condition: 'Brugada Syndrome',
         diagnosedSince: '2018',
         memberSince: '1 week',

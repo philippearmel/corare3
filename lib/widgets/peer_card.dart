@@ -29,23 +29,51 @@ class PeerCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              // Profile picture with online indicator
-              Stack(
-                children: [
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppTheme.mediumBlue,
-                    ),
-                    child: const Icon(
-                      Icons.person,
-                      color: AppTheme.white,
-                      size: 30,
-                    ),
-                  ),
-                ],
+              // Profile picture
+              Container(
+                width: 70,
+                height: 70,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppTheme.mediumBlue,
+                ),
+                child: matchingCandidate.user.avatar != null &&
+                        matchingCandidate.user.avatar!.isNotEmpty
+                    ? ClipOval(
+                        child: Image.network(
+                          matchingCandidate.user.avatar!,
+                          width: 70,
+                          height: 70,
+                          fit: BoxFit.cover,
+                          loadingBuilder: (context, child, loadingProgress) {
+                            if (loadingProgress == null) {
+                              return child;
+                            }
+                            return const SizedBox(
+                              width: 70,
+                              height: 70,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: AppTheme.white,
+                                ),
+                              ),
+                            );
+                          },
+                          errorBuilder: (context, error, stackTrace) {
+                            return const Icon(
+                              Icons.person,
+                              color: AppTheme.white,
+                              size: 24,
+                            );
+                          },
+                        ),
+                      )
+                    : const Icon(
+                        Icons.person,
+                        color: AppTheme.white,
+                        size: 24,
+                      ),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -55,77 +83,71 @@ class PeerCard extends StatelessWidget {
                     Text(
                       matchingCandidate.user.name,
                       style: GoogleFonts.inter(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: AppTheme.darkGray,
                       ),
                     ),
-                    const SizedBox(height: 4),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.location_on,
-                          size: 14,
-                          color: AppTheme.mediumBlue,
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          matchingCandidate.user.location ?? '',
-                          style: GoogleFonts.inter(
-                            fontSize: 12,
-                            color: AppTheme.mediumBlue,
-                          ),
-                        ),
-                      ],
-                    ),
                     const SizedBox(height: 2),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.business,
-                          size: 14,
-                          color: AppTheme.mediumBlue,
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          matchingCandidate.user.organization ?? '',
-                          style: GoogleFonts.inter(
-                            fontSize: 12,
-                            color: AppTheme.mediumBlue,
+                    if (matchingCandidate.user.location != null && matchingCandidate.user.location!.isNotEmpty)
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.location_on,
+                            size: 12,
+                            color: AppTheme.orange,
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      'Member since ${matchingCandidate.user.memberSince}',
-                      style: GoogleFonts.inter(
-                        fontSize: 12,
-                        color: AppTheme.lightGray,
+                          const SizedBox(width: 4),
+                          Text(
+                            matchingCandidate.user.location!,
+                            style: GoogleFonts.inter(
+                              fontSize: 12,
+                              color: AppTheme.darkGray,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
+                    if (matchingCandidate.user.location != null && matchingCandidate.user.location!.isNotEmpty)
+                      const SizedBox(height: 2),
+                    if (matchingCandidate.user.organization != null && matchingCandidate.user.organization!.isNotEmpty)
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.business,
+                            size: 12,
+                            color: AppTheme.orange,
+                          ),
+                          const SizedBox(width: 4),
+                          Text(
+                            matchingCandidate.user.organization!,
+                            style: GoogleFonts.inter(
+                              fontSize: 12,
+                              color: AppTheme.darkGray,
+                            ),
+                          ),
+                        ],
+                      ),
                   ],
                 ),
               ),
               // Condition tag
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 6,
-                ),
-                decoration: BoxDecoration(
-                  color: AppTheme.yellowTag,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Text(
-                  matchingCandidate.user.condition ?? '',
-                  style: GoogleFonts.inter(
-                    fontSize: 10,
-                    color: AppTheme.darkGray,
-                    fontWeight: FontWeight.w500,
+              if (matchingCandidate.user.condition != null && matchingCandidate.user.condition!.isNotEmpty)
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: AppTheme.yellowTag, width: 1),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Text(
+                    matchingCandidate.user.condition!,
+                    style: GoogleFonts.inter(
+                      fontSize: 12,
+                      color: AppTheme.yellowTag,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
-              ),
             ],
           ),
           const SizedBox(height: 16),
@@ -140,6 +162,7 @@ class PeerCard extends StatelessWidget {
           const SizedBox(height: 16),
           // Interests
           if (matchingCandidate.user.interests != null && matchingCandidate.user.interests!.isNotEmpty) ...[
+            const SizedBox(height: 16),
             Text(
               'Interests',
               style: GoogleFonts.inter(
@@ -172,22 +195,48 @@ class PeerCard extends StatelessWidget {
                 );
               }).toList(),
             ),
-            const SizedBox(height: 16),
           ],
           // Action buttons
+          const SizedBox(height: 16),
           Row(
             children: [
-              ElevatedButton.icon(
-                onPressed: () {},
-                icon: const Icon(Icons.link, size: 18),
-                label: const Text('Connect'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppTheme.primaryBlue,
-                  foregroundColor: AppTheme.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+              Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(20),
+                  onTap: () {},
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        colors: [AppTheme.blueGradientStart, AppTheme.blueGradientEnd],
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                      ),
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppTheme.primaryBlue.withValues(alpha: 0.3),
+                          blurRadius: 8,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Icon(Icons.link, size: 18, color: AppTheme.white),
+                        const SizedBox(width: 8),
+                        Text(
+                          'Connect',
+                          style: GoogleFonts.inter(
+                            color: AppTheme.white,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                 ),
               ),
               const SizedBox(width: 12),

@@ -220,7 +220,7 @@ class _PostCardState extends State<PostCard> {
             _getTimeAgo(post.createdAt),
             style: GoogleFonts.inter(
               fontSize: 12,
-              color: AppTheme.lightGray,
+              color: AppTheme.darkGray,
             ),
           ),
           const SizedBox(height: 16),
