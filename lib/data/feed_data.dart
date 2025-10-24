@@ -117,6 +117,7 @@ class FeedData {
       createdAt: DateTime.now().subtract(const Duration(days: 7)),
       commentCount: 2,
       likeCount: 30,
+      isLiked: false,
     ),
     Post(
       id: '2',
@@ -129,6 +130,7 @@ class FeedData {
       createdAt: DateTime.now().subtract(const Duration(days: 5)),
       commentCount: 10,
       likeCount: 0,
+      isLiked: false,
     ),
     Post(
       id: '3',
@@ -141,6 +143,7 @@ class FeedData {
       createdAt: DateTime.now().subtract(const Duration(days: 3)),
       commentCount: 10,
       likeCount: 0,
+      isLiked: false,
     ),
     Post(
       id: '4',
@@ -152,6 +155,7 @@ class FeedData {
       createdAt: DateTime.now().subtract(const Duration(days: 3)),
       commentCount: 8,
       likeCount: 24,
+      isLiked: true,
     ),
     Post(
       id: '5',
@@ -163,6 +167,7 @@ class FeedData {
       createdAt: DateTime.now().subtract(const Duration(days: 5)),
       commentCount: 12,
       likeCount: 18,
+      isLiked: false,
     ),
     Post(
       id: '6',
@@ -174,6 +179,7 @@ class FeedData {
       createdAt: DateTime.now().subtract(const Duration(days: 1)),
       commentCount: 15,
       likeCount: 22,
+      isLiked: true,
     ),
     Post(
       id: '7',
@@ -185,6 +191,7 @@ class FeedData {
       createdAt: DateTime.now().subtract(const Duration(days: 2)),
       commentCount: 25,
       likeCount: 45,
+      isLiked: false,
     ),
     Post(
       id: '8',
@@ -196,6 +203,7 @@ class FeedData {
       createdAt: DateTime.now().subtract(const Duration(hours: 6)),
       commentCount: 7,
       likeCount: 15,
+      isLiked: false,
     ),
     Post(
       id: '9',
@@ -207,6 +215,7 @@ class FeedData {
       createdAt: DateTime.now().subtract(const Duration(days: 4)),
       commentCount: 9,
       likeCount: 14,
+      isLiked: true,
     ),
     Post(
       id: '10',
@@ -218,6 +227,7 @@ class FeedData {
       createdAt: DateTime.now().subtract(const Duration(hours: 12)),
       commentCount: 18,
       likeCount: 31,
+      isLiked: false,
     ),
   ];
 

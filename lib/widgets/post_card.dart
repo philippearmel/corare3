@@ -4,7 +4,7 @@ import '../theme/app_theme.dart';
 import '../models/feed.dart';
 import '../screens/post_detail_screen.dart';
 
-class PostCard extends StatelessWidget {
+class PostCard extends StatefulWidget {
   final Post post;
   final bool showFullContent;
   final bool disableNavigation;
@@ -17,10 +17,35 @@ class PostCard extends StatelessWidget {
   });
 
   @override
+  State<PostCard> createState() => _PostCardState();
+}
+
+class _PostCardState extends State<PostCard> {
+  late Post post;
+
+  @override
+  void initState() {
+    super.initState();
+    post = widget.post;
+  }
+
+  void _toggleLike() {
+    setState(() {
+      if (post.isLiked) {
+        post.isLiked = false;
+        post.likeCount--;
+      } else {
+        post.isLiked = true;
+        post.likeCount++;
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     Widget cardContent = Container(
-      padding: disableNavigation ? EdgeInsets.zero : const EdgeInsets.all(20),
-      decoration: disableNavigation ? null : BoxDecoration(
+      padding: widget.disableNavigation ? EdgeInsets.zero : const EdgeInsets.all(20),
+      decoration: widget.disableNavigation ? null : BoxDecoration(
         color: AppTheme.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
@@ -104,7 +129,7 @@ class PostCard extends StatelessWidget {
                           const Icon(
                             Icons.location_on,
                             size: 12,
-                            color: Color(0xFFFFB700),
+                            color: AppTheme.orange,
                           ),
                           const SizedBox(width: 4),
                           Text(
@@ -124,7 +149,7 @@ class PostCard extends StatelessWidget {
                           const Icon(
                             Icons.business,
                             size: 12,
-                            color: Color(0xFFFFB700),
+                            color: AppTheme.orange,
                           ),
                           const SizedBox(width: 4),
                           Text(
@@ -162,40 +187,46 @@ class PostCard extends StatelessWidget {
               color: AppTheme.darkGray,
               height: 1.4,
             ),
-            maxLines: showFullContent ? null : 3,
-            overflow: showFullContent ? null : TextOverflow.ellipsis,
+            maxLines: widget.showFullContent ? null : 3,
+            overflow: widget.showFullContent ? null : TextOverflow.ellipsis,
           ),
           const SizedBox(height: 16),
           // Engagement metrics
           Row(
             children: [
-              if (post.likeCount > 0) ...[
-                const Icon(
-                  Icons.favorite,
-                  size: 18,
-                  color: AppTheme.mediumBlue,
+              // Heart button
+              GestureDetector(
+                onTap: _toggleLike,
+                child: Row(
+                  children: [
+                    Icon(
+                      post.isLiked ? Icons.favorite : Icons.favorite_border,
+                      size: 20,
+                      color:  AppTheme.primaryBlue,
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      '${post.likeCount}',
+                      style: GoogleFonts.inter(
+                        fontSize: 14,
+                        color: AppTheme.darkGray,
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(width: 4),
-                Text(
-                  '${post.likeCount}',
-                  style: GoogleFonts.inter(
-                    fontSize: 14,
-                    color: AppTheme.mediumBlue,
-                  ),
-                ),
-                const SizedBox(width: 16),
-              ],
+              ),
+              const SizedBox(width: 16),
               const Icon(
                 Icons.chat_bubble_outline,
                 size: 18,
-                color: AppTheme.mediumBlue,
+                color: AppTheme.primaryBlue,
               ),
               const SizedBox(width: 4),
               Text(
                 '${post.commentCount}',
                 style: GoogleFonts.inter(
                   fontSize: 14,
-                  color: AppTheme.mediumBlue,
+                  color: AppTheme.darkGray,
                 ),
               ),
             ],
@@ -205,7 +236,7 @@ class PostCard extends StatelessWidget {
     );
 
     // Wrap with GestureDetector only if navigation is not disabled
-    if (disableNavigation) {
+    if (widget.disableNavigation) {
       return cardContent;
     } else {
       return GestureDetector(
